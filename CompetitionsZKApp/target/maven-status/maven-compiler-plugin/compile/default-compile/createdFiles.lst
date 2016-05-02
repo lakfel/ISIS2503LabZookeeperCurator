@@ -1,0 +1,7 @@
+co\edu\uniandes\isis2503\main\Main.class
+co\edu\uniandes\isis2503\models\CompetitionDTO.class
+co\edu\uniandes\isis2503\services\CompetitionServices.class
+co\edu\uniandes\isis2503\models\Competition.class
+co\edu\uniandes\isis2503\models\CompetitorDTO.class
+co\edu\uniandes\isis2503\main\ServiceRegister.class
+co\edu\uniandes\isis2503\persistence\PersistenceManager.class
