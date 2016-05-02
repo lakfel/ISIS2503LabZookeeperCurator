@@ -23,167 +23,84 @@ import org.codehaus.jettison.json.JSONObject;
  *
  * @author Felipe
  */
-
 @Path("/directory")
-public class DirectoryServices 
-{
-    
+public class DirectoryServices {
+
     private ZooKeeperDiscoveryMannager zooKeeperDiscoveryMannager;
     public static final String ZK_HOST = "localhost";
     public static final String PORT = "2181";
-    
-    
-     
+
     @PostConstruct
-    public void init() 
-    {
-        try 
-        {    
-            String  zkURL = ZK_HOST + ":" + PORT;
+    public void init() {
+        try {
+            String zkURL = ZK_HOST + ":" + PORT;
             zooKeeperDiscoveryMannager = new ZooKeeperDiscoveryMannager();
-            
-           
-            
-            
-        }
-        catch (Exception e) 
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
 
-    
-    @POST
-    @Path("/service")
-    public Response putService(JSONObject in)
-    {
-        JSONObject rta = new JSONObject();
-        try
-        {
-            String name= in.getString("name");
-            String id= in.getString("id");
-            String address= in.getString("address");
-            int port = in.getInt("port");
-            String serviceType = in.getString("serviceType");
-            String uriSpe = in.getString("uriSpec");
-
-            UriSpec uriSpec = new UriSpec("http://"+address+":"+port+uriSpe);
-            
-            ServiceInstance<InstanceDetails> service = new ServiceInstance<InstanceDetails>(name, id, address, port, Integer.SIZE, null, 0, ServiceType.valueOf(serviceType), uriSpec);
-
-            return zooKeeperDiscoveryMannager.putService(service,name,id);            
-            
-        }
-        catch(Exception e)
-        {
-            try
-            {
-                rta.put("Estado","ERROR");
-            }
-            catch(Exception e2)
-            {
-                e2.printStackTrace();
-            
-            }
-            e.printStackTrace();
-        }
-         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
-    }
-    
-    // TODO NO FUNCIONA
     @DELETE
     @Path("/service/{name}/{id}")
-    public Response removeService(@PathParam("name") String name, @PathParam("id") String id)
-    {
+    public Response removeService(@PathParam("name") String name, @PathParam("id") String id) {
         JSONObject rta = new JSONObject();
-        try
-        {
-            return zooKeeperDiscoveryMannager.removeService(name, id);            
-        }
-        catch(Exception e)
-        {
-            try
-            {
-                rta.put("Estado","ERROR");
-            }
-            catch(Exception e2)
-            {
+        try {
+            return zooKeeperDiscoveryMannager.removeService(name, id);
+        } catch (Exception e) {
+            try {
+                rta.put("Estado", "ERROR");
+            } catch (Exception e2) {
                 e2.printStackTrace();
-            
+
             }
             e.printStackTrace();
         }
-         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
+        return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
     }
-    
-    
-    
+
     @GET
     @Path("/service/{name}/{id}")
-    public Response get(@PathParam("name") String name, @PathParam("id") String id)
-    {
-        JSONObject rta = new JSONObject();
-        try
-        {
+    public Response get(@PathParam("name") String name, @PathParam("id") String id) {
+        try {
             return zooKeeperDiscoveryMannager.get(name, id);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("ERROR HACIENDOLO").build();
         }
     }
-    
+
     @GET
     @Path("/service")
-    public Response getAllServices()
-    {
-        System.out.println("Pidiendo servicios 1");
-        JSONObject rta = new JSONObject();
-        try
-        {
-            System.out.println("Pidiendo servicios 2");
+    public Response getAllServices() {
+        try {
             return zooKeeperDiscoveryMannager.getAllNames();
-        }
-        catch(Exception e)
-        {
-            
+        } catch (Exception e) {
+
             e.printStackTrace();
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("ERROR HACIENDOLO").build();
         }
     }
+
     @GET
     @Path("/service/{name}")
-    public Response getAll(@PathParam("name") String name)
-    {
-        JSONObject rta = new JSONObject();
-        try
-        {
+    public Response getAll(@PathParam("name") String name) {
+        try {
             return zooKeeperDiscoveryMannager.getAll(name);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("ERROR HACIENDOLO").build();
         }
     }
-    
+
     @GET
     @Path("/anyservice/{name}")
-    public Response getAny(@PathParam("name") String name)
-    {
-        JSONObject rta = new JSONObject();
-        try
-        {
+    public Response getAny(@PathParam("name") String name) {
+        try {
             return zooKeeperDiscoveryMannager.getAny(name);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("ERROR HACIENDOLO").build();
         }
     }
-    
-}
 
+}

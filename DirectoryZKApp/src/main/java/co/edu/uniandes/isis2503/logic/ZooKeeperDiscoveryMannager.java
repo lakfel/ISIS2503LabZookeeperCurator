@@ -20,8 +20,7 @@ import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.ServiceProvider;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 import org.apache.curator.x.discovery.strategies.RandomStrategy;
-import org.apache.curator.x.discovery.strategies.RoundRobinStrategy;
-import org.codehaus.jettison.json.JSONObject;
+
 
 public class ZooKeeperDiscoveryMannager {
 
@@ -36,39 +35,9 @@ public class ZooKeeperDiscoveryMannager {
     public static final String PORT = "2181";
 
     public ZooKeeperDiscoveryMannager() {
-        client = null;
-        serviceDiscovery = null;
-        providers = Maps.newHashMap();
-        servers = Lists.newArrayList();
-        String zkURL = ZK_HOST + ":" + PORT;
-        try {
-            client = CuratorFrameworkFactory.newClient(zkURL, new ExponentialBackoffRetry(1000, 3));
-            System.out.println("INICIANDO CONEXION --- ");
-            client.start();
-            System.out.println("CONEXION ESTADO --- " + client.getState().name());
 
-            JsonInstanceSerializer<InstanceDetails> serializer = new JsonInstanceSerializer<InstanceDetails>(InstanceDetails.class);
-            serviceDiscovery = ServiceDiscoveryBuilder.builder(InstanceDetails.class).client(client).basePath(PATH).serializer(serializer).build();
-            serviceDiscovery.start();
-
-            System.out.println("CONEXION ESTADO --- " + client.getState().name());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            for (ServiceProvider<InstanceDetails> cache : providers.values()) {
-                CloseableUtils.closeQuietly(cache);
-            }
-
-        }
     }
 
-    public Response putService(ServiceInstance<InstanceDetails> si, String name, String id) throws Exception {
-        ZooKeeperServiceRegister newServiceInstance = new ZooKeeperServiceRegister(client, si, PATH, name, id);
-        newServiceInstance.start();
-        servers.add(newServiceInstance);
-        return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(newServiceInstance).build();
-    }
 
     public Response removeService(String name, String id) {
         final String nameS = name;
