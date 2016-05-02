@@ -1,8 +1,5 @@
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperMannager.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\main\Main.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperServerMannager.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\InstanceDetails.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperServiceRegister.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperDiscoveryMannager.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\services\DirectoryServices.java
-C:\Users\Felipe\Documents\NetBeansProjects\LabZK-Parte2\LaboratorioArquiSW-Zookeeper-Esqueleto\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\services\DirectoryZKServices.java
+C:\Users\Felipe\Documents\NetBeansProjects\LabZKDiscovery\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperDiscoveryMannager.java
+C:\Users\Felipe\Documents\NetBeansProjects\LabZKDiscovery\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\main\Main.java
+C:\Users\Felipe\Documents\NetBeansProjects\LabZKDiscovery\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\ZooKeeperServiceRegister.java
+C:\Users\Felipe\Documents\NetBeansProjects\LabZKDiscovery\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\logic\InstanceDetails.java
+C:\Users\Felipe\Documents\NetBeansProjects\LabZKDiscovery\DirectoryZKApp\src\main\java\co\edu\uniandes\isis2503\services\DirectoryServices.java

@@ -51,7 +51,7 @@ public class CompetitionServices
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() 
     {
-        Query q = entityManager.createQuery("select u from Competencia u order by u.name ASC"); 
+        Query q = entityManager.createQuery("select u from Competition u order by u.name ASC"); 
         List<Competition> competitors = q.getResultList();
         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(competitors).build();
        
@@ -62,14 +62,14 @@ public class CompetitionServices
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllByID(@PathParam("name") String name) 
     {
-         Query q = entityManager.createQuery("select u from Competencia u where u.name = '" + name +"' order by u.name ASC"); 
+         Query q = entityManager.createQuery("select u from Competition u where u.name = '" + name +"' order by u.name ASC"); 
          List<Competition> competencias = q.getResultList();
          List<CompetitorDTO> competidores = new ArrayList<CompetitorDTO>();
          try 
          {    
             Client client = Client.create();
-            WebResource target = client.resource(Main.SERVIDOR_ZK+"/service/"+name);
-            JSONObject pag = target.get(JSONObject.class);
+            WebResource target = client.resource(Main.SERVIDOR_ZK+"service/CompetitorsById");
+            JSONObject pag = ((JSONArray)target.get(JSONArray.class)).getJSONObject(0);
             JSONObject uriSpec = pag.getJSONObject("uriSpec");
             JSONArray parts = uriSpec.getJSONArray("parts");
             String url = "";
@@ -79,6 +79,7 @@ public class CompetitionServices
                      url +="{" + parts.getJSONObject(i).getString("value") + "}";
                  else
                      url += parts.getJSONObject(i).getString("value");
+                 System.out.println("co.edu.uniandes.isis2503.services.CompetitionServices.getAllByID() --- " + url);
                  
              }
             
@@ -86,7 +87,9 @@ public class CompetitionServices
             for (int i = 0; i < competencias.size(); i++) 
              {
                 url2 = url;
-                url2.replace("{id}", "" +competencias.get(i).getWinnerId());
+                System.out.println("URL Primera " + url2);
+                url2 = url2.replace("{id}", "" +competencias.get(i).getWinnerId());
+                System.out.println("URL Segunda " + url2);
                 target = client.resource(url2);
                 competidores.addAll(target.get(List.class));        
              }

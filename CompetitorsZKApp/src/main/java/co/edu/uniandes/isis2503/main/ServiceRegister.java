@@ -15,7 +15,7 @@ import org.codehaus.jettison.json.JSONObject;
  */
 public class ServiceRegister
 {
-    public static final String HOST_ADDRESS = "10.20.30.50";//IP del servicio
+    public static final String HOST_ADDRESS = "localhost";//IP del servicio
     public static final int HOST_PORT = 8081;//Puerto del servicio
     public static final String ID = "200921691";// Identificador del servidor, código del estudiante
     public static final String SERVIDOR_ZK = "http://localhost:8080/directory/"; //Acá va el host del servidor ZK

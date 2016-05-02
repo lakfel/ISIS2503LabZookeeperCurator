@@ -10,10 +10,7 @@
       <property name="eclipselink.nosql.property.mongo.host" value="localhost"/>
       <property name="eclipselink.nosql.property.mongo.db" value="dbcompetencias"/>
       <property name="eclipselink.logging.level" value="FINEST"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
-      <property name="javax.persistence.jdbc.user" value="app"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="app"/>
+
     </properties>
   </persistence-unit>
 </persistence>
